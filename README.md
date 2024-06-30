@@ -1,6 +1,6 @@
 # My Dotfiles
 
-This repository contains my personal configuration files (dotfiles) for various tools and applications.
+This repository contains my personal configuration files (dotfiles) for various tools and applications. It is inspired by [Dreams of Autonomys](https://www.youtube.com/watch?v=y6XCebnB9gs) & [Typecrafts](https://www.youtube.com/watch?v=NoFiYOqnC4o) Stow setup.
 
 ## Requirements
 
