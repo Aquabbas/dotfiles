@@ -49,6 +49,7 @@ zinit light zsh-users/zsh-autosuggestions
 
 # Extra Zsh completions
 zinit snippet OMZP::git
+zinit snippet OMZP::gh
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::aws
