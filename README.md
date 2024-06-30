@@ -51,27 +51,18 @@ ls -lah ls -lah ~/.zshrc
 #### NeoVim (Stop using VSCode you filthy causal!)
 
 ```bash
-ls -lah ls -lah ~/.zshrc
 ls -lah ~/.config/nvim
-ls -lah ~/.config/tmux
-ls -lah ~/.config/alacritty
 ```
 
 #### TMUX (Terminal Multiplexer)
 
 ```bash
-ls -lah ls -lah ~/.zshrc
-ls -lah ~/.config/nvim
 ls -lah ~/.config/tmux
-ls -lah ~/.config/alacritty
 ```
 
 #### Alacritty Terminal
 
 ```bash
-ls -lah ls -lah ~/.zshrc
-ls -lah ~/.config/nvim
-ls -lah ~/.config/tmux
 ls -lah ~/.config/alacritty
 ```
 
