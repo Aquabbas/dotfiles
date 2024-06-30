@@ -26,6 +26,7 @@ return {
 		end
 
 		-- PHP Debugger
+		-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#PHP
 		dap.adapters.php = {
 			type = "executable",
 			command = "node",

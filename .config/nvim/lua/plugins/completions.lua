@@ -5,14 +5,14 @@ return {
 	-- Nvim CMP --> Luasnip --> CMP Luasnip --> Friendly Snippets (The snippets themselves)
 	{
 		"L3MON4D3/LuaSnip",
-    -- run = "make install_jsregexp",
+		-- run = "make install_jsregexp",
 		dependencies = {
 			-- Completion Engine for Luasnip
 			"saadparwaiz1/cmp_luasnip",
 			-- The snippets themselves
 			"rafamadriz/friendly-snippets",
-         -- JSRegExp for LuaSnip transformations
-      "b0o/mapx.nvim",  -- Make sure to include jsregexp library
+			-- JSRegExp for LuaSnip transformations
+			"b0o/mapx.nvim", -- Make sure to include jsregexp library
 		},
 	},
 	{
