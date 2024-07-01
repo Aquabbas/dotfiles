@@ -22,7 +22,7 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			-- Add more LSPs here
+			-- Add more LSPs here for Neovim to know about them and communicate with them
 			local lspconfig = require("lspconfig")
 
 			-- PHP
@@ -59,6 +59,9 @@ return {
 			-- Checkout more LSP functionalities using":h vim.lsp.buf"
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
+			vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {})
+
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
