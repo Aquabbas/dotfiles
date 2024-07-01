@@ -90,3 +90,33 @@ stow .
 ```bash
 rm -r ~/.config/tmux
 ```
+
+### Additional Steps After Installation
+
+- Source your shell:
+
+```
+source .~~/.zshrc
+```
+
+- reload and source tmux:
+
+```
+tmux source ~/.config/tmux/tmux.conf
+```
+
+- Press "prefix + I" to reload
+
+  - ("prefix" is "C-a" or "Ctrl-a", in my case)
+
+- Open Neovim with the "vim" command in the terminal And it wall automatically download dependences.
+  - Run the following in Neovim:
+    ```
+    :TSUpdate
+    ```
+    ```
+    :Lazy update
+    ```
+    ```
+    :Lazy install
+    ```
