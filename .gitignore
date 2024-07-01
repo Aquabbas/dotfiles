@@ -1,12 +1,5 @@
+*~
 .DS_Store
 .config/tmux/plugins/
 fzf
 raycast
-# Ignore everything by default
-# *
-
-# Except the following files and directories
-# !.gitignore
-# !.config/
-# !.zshrc
-# !README.md
