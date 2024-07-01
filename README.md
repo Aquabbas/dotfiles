@@ -96,7 +96,7 @@ rm -r ~/.config/tmux
 - Source your shell:
 
 ```
-source .~/.zshrc
+source ~/.zshrc
 ```
 
 - start, source, and reload tmux:
