@@ -5,7 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export FUNCNEST=1000  # or a higher number if needed
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
 
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
@@ -110,21 +113,6 @@ alias c='clear'
 # ----------------------------------------------------------------------
 
 
-# Set default editor for lazygit
-# export LAZYGIT_EDITOR=vim
-export EDITOR=nvim
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 
 # Shell integrations
 # ----------------------------------------------------------------------
@@ -132,5 +120,45 @@ export NVM_DIR="$HOME/.nvm"
 # eval "$(zoxide init --cmd cd zsh)"
 # ----------------------------------------------------------------------
 
+
+
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+
+
+# Exports
+# ----------------------------------------------------------------------
+export FUNCNEST=1000  # or a higher number if needed
+export EDITOR=nvim
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$PATH:/home/abbashayder/.nvm/versions/node/v18.15.0/bin"
+
+# [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+# Load Angular CLI autocompletion.
+# source <(ng completion script)
+# ----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
