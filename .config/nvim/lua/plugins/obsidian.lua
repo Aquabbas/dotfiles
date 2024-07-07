@@ -5,11 +5,23 @@ return {
     -- ft = "markdown",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
+        local vault_path = ""
+
+        -- Detect OS
+        local os_name = jit.os
+        if os_name == "osx" then
+            vault_path = "~/Obsidian/Notes"
+        elseif os_name == "linux" then
+            vault_path = "~/Obsidian/Notes"
+        else
+            vault_path = "/mnt/c/Users/AbbasHayder/Obsidian/Notes"
+        end
+
         require("obsidian").setup({
             workspaces = {
                 {
                     name = "Notes",
-                    path = "~/Obsidian/Notes",
+                    path = vault_path,
                 },
             },
             -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -19,11 +31,10 @@ return {
                 -- Trigger completion at 2 chars.
                 min_chars = 2,
             },
-            -- Obsidian
+            -- Obsidian Keymaps
             vim.keymap.set(
                 "n",
-               "<leader>oc",
-                -- "<C-l>",
+                "<leader>oc",
                 "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>",
                 { desc = "Obsidian Check Checkbox" }
             ),
