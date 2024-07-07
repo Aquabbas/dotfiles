@@ -11,6 +11,9 @@ vim.g.background = "light"
 vim.opt.number = true
 vim.wo.relativenumber = true
 
+-- For obsidian.nvim
+vim.opt.conceallevel = 2
+
 -- Set Python 3 host program
 vim.g.python3_host_prog = "/usr/bin/python3"
 
