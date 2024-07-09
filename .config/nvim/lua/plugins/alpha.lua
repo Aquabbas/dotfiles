@@ -44,7 +44,7 @@ return {
             -- dashboard.button("m", "󰍥  > Messages", ":messages<CR>"),
             -- dashboard.button("<leader>h", "󱍋  > Documentation", ":Telescope help_tags<CR>"),
 
-            dashboard.button("q", "(╯°□°)╯︵ ┻━┻ > Quit", ":qa<CR>"),
+            dashboard.button("q", "(╯°□°)╯︵ ┻━┻", ":qa<CR>"),
         }
 
         alpha.setup(dashboard.opts)
