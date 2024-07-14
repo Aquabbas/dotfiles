@@ -37,7 +37,7 @@ brew install stow
 ```bash
 git clone https://github.com/Aquabbas/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-stow --target .
+stow .
 ```
 
 Check on your [Symlinks](https://www.gnu.org/software/libc/manual/html_node/Symbolic-Links.html):
