@@ -38,5 +38,5 @@
   "vim-commentary": { "branch": "master", "commit": "c4b8f52cbb7142ec239494e5a2c4a512f92c4d07" },
   "vim-fugitive": { "branch": "master", "commit": "8c8cdf4405cb8bdb70dd9812a33bb52363a87dbc" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
-  "which-key.nvim": { "branch": "main", "commit": "4c36b9b8c722bcf51d038dcfba8b967f0ee818b8" }
+  "which-key.nvim": { "branch": "main", "commit": "f8c91b2b4a2d239d3b1d49f901a393e7326a5da8" }
 }
