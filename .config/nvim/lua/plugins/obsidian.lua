@@ -18,6 +18,20 @@ return {
 		end
 
 		require("obsidian").setup({
+			-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
+			-- URL it will be ignored but you can customize this behavior here.
+			---@param url string
+			follow_url_func = function(url)
+				-- Open the URL in the default web browser based on OS.
+				if is_windows then
+					vim.fn.jobstart({ "powershell.exe", "-Command", "Start-Process", url })
+				elseif vim.fn.has("mac") == 1 then
+					vim.fn.jobstart({ "open", url })
+				else
+					vim.fn.jobstart({ "xdg-open", url })
+				end
+			end,
+
 			workspaces = {
 				{
 					name = "Notes",
@@ -25,12 +39,14 @@ return {
 				},
 			},
 			-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
+
 			completion = {
 				-- Set to false to disable completion.
 				nvim_cmp = true,
 				-- Trigger completion at 2 chars.
 				min_chars = 2,
 			},
+
 			-- Obsidian Keymaps
 			vim.keymap.set(
 				"n",
