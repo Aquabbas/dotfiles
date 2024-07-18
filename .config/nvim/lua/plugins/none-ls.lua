@@ -28,6 +28,12 @@ return {
 				-- PHP
 				null_ls.builtins.diagnostics.phpcs.with({}),
 				null_ls.builtins.formatting.phpcbf.with({}),
+
+				-- Markdown
+				-- null_ls.builtins.diagnostics.markdownlint_cli2,
+				-- null_ls.builtins.diagnostics.markdownlint_cli2,
+				null_ls.builtins.diagnostics.markdownlint,
+				null_ls.builtins.diagnostics.markdownlint,
 			},
 		})
 
