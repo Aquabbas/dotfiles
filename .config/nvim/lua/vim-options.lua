@@ -31,12 +31,12 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Resize Ver
 
 -- highlight yanks
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 300, -- duration in milliseconds
-		})
-	end,
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 300, -- duration in milliseconds
+        })
+    end,
 })
 
 -- Enable Ctrl + hjkl for pane navigation
@@ -56,3 +56,4 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 
 -- Set Ruby host program (using symlinked path)
 vim.g.ruby_host_prog = "/usr/bin/ruby"
+
