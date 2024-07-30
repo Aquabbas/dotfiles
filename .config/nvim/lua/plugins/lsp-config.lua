@@ -4,7 +4,39 @@ return {
 		"williamboman/mason.nvim",
 		lazy = false,
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+				PATH = "prepend",
+				-- Use pnpm on Linux/Unix, npm on Windows
+				pip = {
+					upgrade_pip = true,
+				},
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			})
+
+			-- Ensure certain tools are installed
+			if vim.fn.has("unix") == 1 then
+				local mr = require("mason-registry")
+				for _, tool in ipairs({
+					"lua-language-server", -- For Lua
+					"intelephense", -- For PHP
+					"typescript-language-server", -- For TypeScript/JavaScript
+					"html-lsp", -- For HTML
+					"clangd", -- For C++
+					"astro-language-server", -- For Astro
+					"bash-language-server", -- For Bash/Zsh
+				}) do
+					local p = mr.get_package(tool)
+					if not p:is_installed() then
+						p:install()
+					end
+				end
+			end
 		end,
 	},
 	{
@@ -25,23 +57,28 @@ return {
 			-- Add more LSPs here for Neovim to know about them and communicate with them
 			local lspconfig = require("lspconfig")
 
+			-- Bash/Zsh
+			lspconfig.bashls.setup({
+				allowlist = {
+					-- Add zsh file extensions here
+					{ "zsh" },
+				},
+			})
+
+			-- Astro Framework LSP
+			lspconfig.astro.setup({
+				capabilities = capabilities,
+			})
+
 			-- PHP
 			lspconfig.intelephense.setup({
 				capabilities = capabilities,
 			})
-			-- lspconfig.phpactor.setup({
-			-- 	capabilities = capabilities,
-			-- })
 
 			-- TypeScript/JavaScript
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 			})
-
-			-- Ruby
-			-- lspconfig.solargraph.setup({
-			-- 	capabilities = capabilities,
-			-- })
 
 			lspconfig.html.setup({
 				capabilities = capabilities,
@@ -64,6 +101,11 @@ return {
 
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "zsh",
+				command = "setlocal filetype=sh",
+			})
 		end,
 	},
 }
