@@ -23,13 +23,24 @@ return {
 			if vim.fn.has("unix") == 1 then
 				local mr = require("mason-registry")
 				for _, tool in ipairs({
-					"lua-language-server", -- For Lua
-					"intelephense", -- For PHP
-					"typescript-language-server", -- For TypeScript/JavaScript
-					"html-lsp", -- For HTML
-					"clangd", -- For C++
-					"astro-language-server", -- For Astro
-					"bash-language-server", -- For Bash/Zsh
+					"astro-language-server", -- Astro Framework
+					"angular-language-server", -- Angular
+					"sqlls", -- SQL
+					"rust-analyzer", -- Rust
+					"clangd", -- C++
+					"lua-language-server", -- Lua
+					"intelephense", -- PHP
+					"typescript-language-server", -- TypeScript/JavaScript
+					"eslint-lsp",
+					"tailwindcss-language-server", -- Tailwind CSS
+					"css-variables-language-server", -- CSS
+					"html-lsp", -- html
+					"marksman", -- Markdown
+					"bash-language-server", -- Bash/Zsh
+					"dot-language-server", -- .env
+					"dockerfile-language-server", -- Docker
+					"docker-compose-language-service",
+					"textlsp", -- Spelling
 				}) do
 					local p = mr.get_package(tool)
 					if not p:is_installed() then
@@ -56,17 +67,37 @@ return {
 
 			-- Add more LSPs here for Neovim to know about them and communicate with them
 			local lspconfig = require("lspconfig")
+			-- ---------------------------------------------
+			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+			-- ---------------------------------------------
 
-			-- Bash/Zsh
-			lspconfig.bashls.setup({
-				allowlist = {
-					-- Add zsh file extensions here
-					{ "zsh" },
-				},
+			-- Frameworks
+			lspconfig.astro.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.angularls.setup({
+				capabilities = capabilities,
 			})
 
-			-- Astro Framework LSP
-			lspconfig.astro.setup({
+			-- ---------------------------------------------
+
+			-- SQL
+			lspconfig.sqlls.setup({
+				capabilities = capabilities,
+			})
+
+			-- Rust
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+			})
+
+			-- C/C++
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+			})
+
+			-- Lua
+			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
 
@@ -79,19 +110,66 @@ return {
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.eslint.setup({
+				capabilities = capabilities,
+			})
 
+			-- Tailwind CSS
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+			})
+
+			-- CSS
+			lspconfig.css_variables.setup({
+				capabilities = capabilities,
+			})
+
+			-- html
 			lspconfig.html.setup({
 				capabilities = capabilities,
 			})
 
-			lspconfig.lua_ls.setup({
+			-- Markdown
+			lspconfig.marksman.setup({
 				capabilities = capabilities,
 			})
 
-			-- C++
-			lspconfig.clangd.setup({
+			-- Bash/Zsh
+			lspconfig.bashls.setup({
+				allowlist = {
+					{ "zsh" },
+				},
+			})
+			-- Configure Neovim to use bash-language-server for zsh files
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "zsh",
+				command = "setlocal filetype=sh",
+			})
+
+			-- .env
+			lspconfig.dotls.setup({
 				capabilities = capabilities,
 			})
+
+			-- Docker
+			lspconfig.dockerls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.docker_compose_language_service.setup({
+				capabilities = capabilities,
+			})
+
+			-- Spelling
+			lspconfig.textlsp.setup({
+				capabilities = capabilities,
+			})
+
+            -- A plain text note-taking assistant
+			lspconfig.zk.setup({
+				capabilities = capabilities,
+			})
+
+			-- ---------------------------------------------
 
 			-- Checkout more LSP functionalities using":h vim.lsp.buf"
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -101,11 +179,6 @@ return {
 
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "zsh",
-				command = "setlocal filetype=sh",
-			})
 		end,
 	},
 }
