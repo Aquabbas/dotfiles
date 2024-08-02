@@ -36,11 +36,11 @@ config.keys = {
         mods = "CTRL",
         action = act.PasteFrom("Clipboard"),
     },
-    {
-        key = "f",
-        mods = "CTRL",
-        action = wezterm.action.ToggleFullScreen,
-    },
+    -- {
+    --     key = "f",
+    --     mods = "CTRL",
+    --     action = wezterm.action.ToggleFullScreen,
+    -- },
     {
         key = "'",
         mods = "CTRL",
