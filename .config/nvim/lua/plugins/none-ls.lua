@@ -7,49 +7,84 @@ return {
         local null_ls = require("null-ls")
         null_ls.setup({
             sources = {
-                -- For more Linter/Formatter Setups
-                -- Go to: https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
+                -- ---------------------------------------------
+                -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
+                -- ---------------------------------------------
 
-                -- Bash/Zsh
-                null_ls.builtins.formatting.shfmt,
-                null_ls.builtins.diagnostics.zsh,
+                -- SQL
+                null_ls.builtins.diagnostics.sqlfluff.with({
+                    extra_args = { "--dialect", "postgres", "mysql", "sqlite" }, -- change to your dialect
+                }),
+                null_ls.builtins.formatting.sqlfluff.with({
+                    extra_args = { "--dialect", "postgres", "mysql", "sqlite" }, -- change to your dialect
+                }),
 
-                -- null_ls.builtins.formatting.beautysh.with({
-                -- }),
+                -- Rust
+                null_ls.builtins.formatting.dxfmt,
 
-                -- null_ls.builtins.diagnostics.shellcheck.with({
-                -- }),
-
-                -- null_ls.builtins.formatting.beautysh,
-                -- null_ls.builtins.diagnostics.shellcheck,
+                -- C/C++
+                null_ls.builtins.formatting.clang_format,
+                null_ls.builtins.diagnostics.cppcheck,
 
                 -- Lua
                 null_ls.builtins.formatting.stylua,
-
-                -- General Frontend Formatter
-                null_ls.builtins.formatting.prettier,
-                --
-                -- TypeScript/JavaScript
-                require("none-ls.diagnostics.eslint_d"),
-
-                -- Python
-                null_ls.builtins.formatting.black,
-                null_ls.builtins.formatting.isort,
-
-                -- Ruby
-                null_ls.builtins.diagnostics.erb_lint,
-                null_ls.builtins.diagnostics.rubocop,
-                null_ls.builtins.formatting.rubocop,
 
                 -- PHP
                 null_ls.builtins.diagnostics.phpcs.with({}),
                 null_ls.builtins.formatting.phpcbf.with({}),
 
+                -- General Frontend Formatter
+                null_ls.builtins.formatting.prettier,
+                -- TypeScript/JavaScript
+                require("none-ls.diagnostics.eslint_d"),
+
+                -- Tailwind CSS
+                null_ls.builtins.formatting.rustywind,
+
+                -- CSS
+                null_ls.builtins.formatting.stylelint,
+                null_ls.builtins.diagnostics.stylelint,
+
+                -- html
+                null_ls.builtins.diagnostics.markuplint,
+
+                -- Bash
+                null_ls.builtins.formatting.shfmt,
+
+                -- Zsh
+                null_ls.builtins.diagnostics.zsh,
+
+                -- ---------------------------------------------
+                -- EXTRAS
+                -- ---------------------------------------------
+
                 -- Markdown
-                -- null_ls.builtins.diagnostics.markdownlint_cli2,
-                -- null_ls.builtins.diagnostics.markdownlint_cli2,
                 null_ls.builtins.diagnostics.markdownlint,
-                null_ls.builtins.diagnostics.markdownlint,
+                null_ls.builtins.formatting.markdownlint,
+
+                -- git commit (Conventional Commits)
+                null_ls.builtins.diagnostics.commitlint,
+
+                -- .env files
+                -- https://dotenv-linter.github.io/#/installation?id=cargo
+                null_ls.builtins.diagnostics.dotenv_linter,
+
+                -- Spelling
+                null_ls.builtins.formatting.codespell,
+                null_ls.builtins.diagnostics.codespell,
+                null_ls.builtins.completion.spell,
+
+                -- Git Integration
+                null_ls.builtins.code_actions.gitsigns,
+
+                -- Docker
+                null_ls.builtins.diagnostics.hadolint,
+
+                -- Markdown
+                null_ls.builtins.hover.dictionary,
+
+                -- Shell
+                null_ls.builtins.hover.printenv,
             },
         })
 
